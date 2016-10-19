@@ -3,12 +3,15 @@
 [![NPM version](https://badge.fury.io/js/minoss-pushover.svg)](http://www.npmjs.org/package/minoss-pushover)
 [![Dependency version](https://david-dm.org/eisbehr-/minoss-pushover.png)](https://david-dm.org/eisbehr-/minoss-pushover)
 
-This module adds support for Pushover notification to [Minoss](https://github.com/eisbehr-/minoss) server.
+This module adds support for Pushover notifications to [Minoss](https://github.com/eisbehr-/minoss) server.
 The API communication is based on [`pushover-notifications`](https://www.npmjs.com/package/pushover-notifications).
 
 
 ## Table Of Contents
 * [Installation](#installation)
+* [Configuration](#configuration)
+* [Basic Usage](#basic-usage)
+* [Parameter Shorthand](#parameter-shorthand)
 * [Bugs / Feature request](#bugs--feature-request)
 * [License](#license)
 * [Donation](#donation)
@@ -23,6 +26,35 @@ Inside your Minoss root folder just use [npm](http://npmjs.com) to install this 
 ```SH
 $ npm install minoss-pushover
 ```
+
+
+## Configuration
+
+
+## Basic Usage
+
+
+### Parameter Shorthand
+All request parameters can be shorten to it's first character (_except `url_title` and `timestamp` which are shorten with `ut` and `ts`_).
+With this it is possible to use shorten URLs.
+
+```TEXT
+app        ->  a
+message    ->  m
+device     ->  d
+title      ->  t
+url        ->  u
+url_title  ->  ut (!)
+priority   ->  p
+timestamp  ->  ts (!)
+sound      ->  s
+```
+
+Example:
+
+> http://localhost:8080/pushover/send?**app**=default&**priority**=1&**device**=*  
+> http://localhost:8080/pushover/send?**a**=default&**p**=1&**d**=*
+
 
 ## Bugs / Feature request
 Please [report](http://github.com/eisbehr-/minoss-pushover/issues) bugs and feel free to [ask](http://github.com/eisbehr-/minoss-pushover/issues) for new features directly on GitHub.

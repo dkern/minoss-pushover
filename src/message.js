@@ -12,6 +12,8 @@ var merge = require("./merge");
  */
 function buildMessage(message, config, error) {
     var jsonObj, build = {};
+
+    message = message || "default";
     message = message.indexOf("|") !== -1 ? message.split("|") : [message];
 
     for( var i = 0; i < message.length; i++ ) {
@@ -21,7 +23,6 @@ function buildMessage(message, config, error) {
         }
 
         // merge from config
-        // noinspection JSUnresolvedVariable
         if( config.messages[message[i]] ) {
             // noinspection JSUnresolvedVariable
             merge(build, config.messages[message[i]]);
@@ -55,11 +56,27 @@ function buildMessage(message, config, error) {
  * @returns {object}
  */
 function overwriteParameters(messageObj, params) {
-    var replaces = ["device", "title", "url", "url_title", "priority", "timestamp", "sound"];
+    var replaces = {
+        d:  "device",
+        t:  "title",
+        u:  "url",
+        ut: "url_title",
+        p:  "priority",
+        ts: "timestamp",
+        s:  "sound"
+    };
 
-    for( var i = 0; i < replaces.length; i++ ) {
-        if( params[replaces[i]] ) {
-            messageObj[replaces[i]] = params[replaces[i]];
+    for( var key in replaces ) {
+        if( replaces.hasOwnProperty(key) ) {
+            // by shorthand
+            if( params[key] ) {
+                messageObj[replaces[key]] = params[key];
+            }
+
+            // by name
+            if( params[replaces[key]] ) {
+                messageObj[replaces[key]] = params[replaces[key]];
+            }
         }
     }
 
@@ -76,7 +93,7 @@ function overwriteParameters(messageObj, params) {
 module.exports = function(config, params, error) {
     var message;
 
-    message = buildMessage(params.message, config, error);
+    message = buildMessage(params.message || params.m, config, error);
 
     if( message) {
         message = overwriteParameters(message, params);

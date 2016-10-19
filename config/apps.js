@@ -2,7 +2,7 @@
 
 module.exports = {
     default: {
-        user: "",
-        token: ""
+        user: "user-key",
+        token: "app-token"
     }
 };
