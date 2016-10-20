@@ -1,7 +1,7 @@
 {
   "name": "minoss-pushover",
   "title": "Pushover Module for Minoss",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pushover Module for Minoss",
   "main": "package.json",
   "homepage": "https://github.com/eisbehr-/minoss-pushover",
