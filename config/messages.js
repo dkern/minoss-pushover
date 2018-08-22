@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 module.exports = {
     default: {
-        device: "*",
+        device: '*',
         priority: 0
     },
     high: {

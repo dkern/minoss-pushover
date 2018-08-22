@@ -48,12 +48,12 @@ So, if only one app is available, the name `default` should be used.
 ```JS
 module.exports = {
     default: {
-        user:  "14a6b88846b28898a237fa3f84148f54",
-        token: "30f28fcb0c97083d20a8cd06f3f6e737"
+        user:  '14a6b88846b28898a237fa3f84148f54',
+        token: '30f28fcb0c97083d20a8cd06f3f6e737'
     },
     another: {
-        user:  "85b9e76dc041b411b04b5c1f49cba885",
-        token: "8d0771a0757289d942db83db090623d6"
+        user:  '85b9e76dc041b411b04b5c1f49cba885',
+        token: '8d0771a0757289d942db83db090623d6'
     }
 };
 ```
@@ -116,9 +116,9 @@ When a message property is set by more than one entry, the last one will be set.
 For example, these are predefined states:
 
 ```JS
-var messages = {
+let messages = {
     default: {
-        device: "*",
+        device: '*',
         priority: 0
     },
     high: {
@@ -135,8 +135,8 @@ The resulting message object would become:
 
 ```JS
 {
-  message: "my message text",
-  device: "*",
+  message: 'my message text',
+  device: '*',
   priority: 1
 }
 ```

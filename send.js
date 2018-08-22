@@ -1,36 +1,36 @@
-"use strict";
+'use strict';
 
-var Pushover = require("pushover-notifications");
-var message = require("./src/message");
-var merge = require("./src/merge");
-var json = require("./src/json");
+let Pushover = require('pushover-notifications');
+let message = require('./src/message');
+let merge = require('./src/merge');
+let json = require('./src/json');
 
-module.exports = function(config, params, respond, error) {
+module.exports = (config, params, respond, error) => {
     // noinspection JSUnresolvedVariable
-    var appName = params.app || params.a || "default";
+    let appName = params.app || params.a || 'default';
 
     // noinspection JSUnresolvedVariable
-    if( !params.message && !params.m ) {
-        return error("parameter 'message' is required");
+    if (!params.message && !params.m) {
+        return error('parameter "message" is required');
     }
 
     // noinspection JSUnresolvedVariable
-    if( !config.apps[appName] ) {
-        return error("unknown app");
+    if (!config.apps[appName]) {
+        return error('unknown app');
     }
 
     // noinspection JSUnresolvedVariable
-    var app = config.apps[appName];
-    app.onerror = function(err) {
+    let app = config.apps[appName];
+    app.onerror = err => {
         // add an callback to prevent unhandled thrown errors
     };
 
-    var pushover = new Pushover(app);
-    var messageObj = message(config, params, error);
+    let pushover = new Pushover(app);
+    let messageObj = message(config, params, error);
 
     // send message
-    pushover.send(merge({}, messageObj), function(err, result) {
-        if( err ) {
+    pushover.send(merge({}, messageObj), (err, result) => {
+        if (err) {
             return error(err.message);
         }
 

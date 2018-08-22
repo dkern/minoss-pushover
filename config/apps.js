@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 module.exports = {
     default: {
-        user: "user-key",
-        token: "app-token"
+        user: 'user-key',
+        token: 'app-token'
     }
 };

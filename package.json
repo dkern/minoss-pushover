@@ -1,7 +1,7 @@
 {
   "name": "minoss-pushover",
   "title": "Pushover Module for Minoss",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Pushover Module for Minoss",
   "main": "package.json",
   "homepage": "https://github.com/eisbehr-/minoss-pushover",
@@ -19,7 +19,7 @@
     "minoss",
     "pushover"
   ],
-  "license" : "(MIT OR GPL-2.0)",
+  "license": "(MIT OR GPL-2.0)",
   "licenses": [
     {
       "type": "MIT",
@@ -31,6 +31,6 @@
     }
   ],
   "dependencies": {
-    "pushover-notifications": "^0.2.3"
+    "pushover-notifications": "^1.0.0"
   }
 }

@@ -1,50 +1,50 @@
-"use strict";
+'use strict';
 
-var json = require("./json");
-var merge = require("./merge");
+let json = require('./json');
+let merge = require('./merge');
 
 /**
  * build message from given data
- * @param {string} message
+ * @param {string|array} message
  * @param {object} config
  * @param {function} error
  * @returns {boolean|object}
  */
 function buildMessage(message, config, error) {
-    var jsonObj, build = {};
+    let jsonObj, build = {};
 
-    message = message || "default";
-    message = message.indexOf("|") !== -1 ? message.split("|") : [message];
+    message = message || 'default';
+    message = message.indexOf('|') !== -1 ? message.split('|') : [message];
 
-    for( var i = 0; i < message.length; i++ ) {
+    message.forEach(msg => {
         // skip empty entries
-        if( message[i] === "" ) {
-            continue;
+        if (msg === '') {
+            return;
         }
 
         // merge from config
-        if( config.messages[message[i]] ) {
+        if (config.messages[msg]) {
             // noinspection JSUnresolvedVariable
-            merge(build, config.messages[message[i]]);
+            merge(build, config.messages[msg]);
         }
 
         // merge from json string
-        else if( (jsonObj = json(message[i])) ) {
+        else if ((jsonObj = json(msg))) {
             merge(build, jsonObj);
         }
 
         // use string as message
-        else if( typeof message[i] === "string" ) {
-            build.message = message[i];
+        else if (typeof msg === 'string') {
+            build.message = msg;
         }
 
         // error on unknown entry
         else {
-            return error("message '" + message[i] + "' is unknown");
+            return error(`message '${msg}' is unknown`);
         }
 
         jsonObj = null;
-    }
+    });
 
     return build;
 }
@@ -56,29 +56,27 @@ function buildMessage(message, config, error) {
  * @returns {object}
  */
 function overwriteParameters(messageObj, params) {
-    var replaces = {
-        d:  "device",
-        t:  "title",
-        u:  "url",
-        ut: "url_title",
-        p:  "priority",
-        ts: "timestamp",
-        s:  "sound"
+    let replaces = {
+        d:  'device',
+        t:  'title',
+        u:  'url',
+        ut: 'url_title',
+        p:  'priority',
+        ts: 'timestamp',
+        s:  'sound'
     };
 
-    for( var key in replaces ) {
-        if( replaces.hasOwnProperty(key) ) {
-            // by shorthand
-            if( params[key] ) {
-                messageObj[replaces[key]] = params[key];
-            }
-
-            // by name
-            if( params[replaces[key]] ) {
-                messageObj[replaces[key]] = params[replaces[key]];
-            }
+    Object.keys(params).forEach(key => {
+        // by shorthand
+        if (params[key]) {
+            messageObj[replaces[key]] = params[key];
         }
-    }
+
+        // by name
+        if (params[replaces[key]]) {
+            messageObj[replaces[key]] = params[replaces[key]];
+        }
+    });
 
     return messageObj;
 }
@@ -90,12 +88,10 @@ function overwriteParameters(messageObj, params) {
  * @param {function} error
  * @returns {object|boolean}
  */
-module.exports = function(config, params, error) {
-    var message;
+module.exports = (config, params, error) => {
+    let message = buildMessage(params.message || params.m, config, error);
 
-    message = buildMessage(params.message || params.m, config, error);
-
-    if( message) {
+    if (message) {
         message = overwriteParameters(message, params);
     }
 
