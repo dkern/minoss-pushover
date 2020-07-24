@@ -1,9 +1,9 @@
 # Pushover for Minoss
-[![GitHub version](https://badge.fury.io/gh/eisbehr-%2Fminoss-pushover.svg)](http://github.com/eisbehr-/minoss-pushover)
+[![GitHub version](https://badge.fury.io/gh/dkern%2Fminoss-pushover.svg)](http://github.com/dkern/minoss-pushover)
 [![NPM version](https://badge.fury.io/js/minoss-pushover.svg)](http://www.npmjs.org/package/minoss-pushover)
-[![Dependency version](https://david-dm.org/eisbehr-/minoss-pushover.png)](https://david-dm.org/eisbehr-/minoss-pushover)
+[![Dependency version](https://david-dm.org/dkern/minoss-pushover.png)](https://david-dm.org/dkern/minoss-pushover)
 
-This module adds support for Pushover notifications to [Minoss](https://github.com/eisbehr-/minoss) server.
+This module adds support for Pushover notifications to [Minoss](https://github.com/dkern/minoss) server.
 The API communication is based on [`pushover-notifications`](https://www.npmjs.com/package/pushover-notifications).
 
 
@@ -147,7 +147,7 @@ It is even possible to chain a `JSON` string too.
 
 
 ## Bugs / Feature request
-Please [report](http://github.com/eisbehr-/minoss-pushover/issues) bugs and feel free to [ask](http://github.com/eisbehr-/minoss-pushover/issues) for new features directly on GitHub.
+Please [report](http://github.com/dkern/minoss-pushover/issues) bugs and feel free to [ask](http://github.com/dkern/minoss-pushover/issues) for new features directly on GitHub.
 
 
 ## License
